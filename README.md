@@ -32,15 +32,15 @@ It makes use of leveldb to store the log entries
 
 #####Set GOPATH
 
-``>export GOPATH=<directory>``
+``> export GOPATH=<directory>``
 
-``>go get github.com/nikolodien/goDB``
+``> go get github.com/nikolodien/goDB``
 
 #####The next two steps can be skipped if you don't get any messages
 
-``>go build github.com/nikolodien/goDB``
+``> go build github.com/nikolodien/goDB``
 
-``>go install $GOPATH/src/github.com/nikolodien/goDB/broker.go``
+``> go install $GOPATH/src/github.com/nikolodien/goDB/broker.go``
 
 ========
 
