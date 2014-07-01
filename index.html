@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Godb : Key-Value Store in golang" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Godb</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/nikolodien/goDB">View on GitHub</a>
+
+          <h1 id="project_title">Godb</h1>
+          <h2 id="project_tagline">Key-Value Store in golang</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/nikolodien/goDB/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/nikolodien/goDB/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>
+<a name="godb" class="anchor" href="#godb"><span class="octicon octicon-link"></span></a>goDB</h1>
+
+<h3>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>Features</h3>
+
+<ol>
+<li>Replicated</li>
+<li>Consistent</li>
+<li>Fault Tolerant</li>
+</ol><h1></h1>
+
+<h3>
+<a name="supported-operations" class="anchor" href="#supported-operations"><span class="octicon octicon-link"></span></a>Supported Operations</h3>
+
+<ol>
+<li>Get</li>
+<li>Put</li>
+<li>Delete</li>
+</ol><h1></h1>
+
+<h3>
+<a name="mechnisms" class="anchor" href="#mechnisms"><span class="octicon octicon-link"></span></a>Mechnisms</h3>
+
+<h5>
+<a name="raft-leader-election-for-consensus" class="anchor" href="#raft-leader-election-for-consensus"><span class="octicon octicon-link"></span></a>Raft Leader Election for Consensus</h5>
+
+<p>Makes use of Raft Leader election protocol to achieve consensus. The system ensures that there is only one leader at a given point of time. It is fault tolerant. In the event of shutdown of the leader, a new leader is immediately elected. The system has been tested rigorously to maintain this property.</p>
+
+<h5>
+<a name="raft-log-replication-for-consistency" class="anchor" href="#raft-log-replication-for-consistency"><span class="octicon octicon-link"></span></a>Raft Log Replication for Consistency</h5>
+
+<p>Consistency is achieved by using log replication. Every operation is declared to be committed only if it is committed in the log of majority of the servers. It it fails to do so then the operation is cancelled.</p>
+
+<p>It makes use of leveldb to store the log entries</p>
+
+<h3>
+<a name="instructions-for-installing" class="anchor" href="#instructions-for-installing"><span class="octicon octicon-link"></span></a>Instructions for installing</h3>
+
+<h5>
+<a name="set-gopath" class="anchor" href="#set-gopath"><span class="octicon octicon-link"></span></a>Set GOPATH</h5>
+
+<p><code>&gt; export GOPATH=&lt;directory&gt;</code></p>
+
+<p><code>&gt; go get github.com/nikolodien/goDB</code></p>
+
+<h5>
+<a name="the-next-two-steps-can-be-skipped-if-you-dont-get-any-messages" class="anchor" href="#the-next-two-steps-can-be-skipped-if-you-dont-get-any-messages"><span class="octicon octicon-link"></span></a>The next two steps can be skipped if you don't get any messages</h5>
+
+<p><code>&gt; go build github.com/nikolodien/goDB</code></p>
+
+<p><code>&gt; go install $GOPATH/src/github.com/nikolodien/goDB/broker.go</code></p>
+
+<h1></h1>
+
+<h3>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>A new instance of the server has to be created using the <code>statemachine.New()</code> function</p>
+
+<p>After that, the client needs to connect to the server as follows</p>
+
+<p><code>client, err := rpc.DialHTTP("tcp", host:port)</code></p>
+
+<p>Each operation is an rpc call to the server</p>
+
+<ol>
+<li>Get<br><code>var val statemachine.Val</code><br><code>var key = "key_string"</code><br><code>err = client.Call("KVStore.Get", key, &amp;val)</code><br>
+</li>
+<li>Put<br><code>keyValue := statemachine.KeyValue{key, i}</code><br><code>var reply int</code><br><code>err = client.Call("KVStore.Put", keyValue, &amp;reply)</code><br>
+</li>
+<li>Delete<br><code>var reply int</code><br><code>key := "key_string"</code><br><code>err = client.Call("KVStore.Del", key, &amp;reply)</code><br>
+</li>
+</ol><h1></h1>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Godb maintained by <a href="https://github.com/nikolodien">nikolodien</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
