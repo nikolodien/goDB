@@ -28,6 +28,20 @@ Consistency is achieved by using log replication. Every operation is declared to
 
 It makes use of leveldb to store the log entries
 
+###Instructions for installing
+
+#####Set GOPATH
+
+``>export GOPATH=<directory>``
+
+``>go get github.com/nikolodien/goDB``
+
+#####The next two steps can be skipped if you don't get any messages
+
+``>go build github.com/nikolodien/goDB``
+
+``>go install $GOPATH/src/github.com/nikolodien/goDB/broker.go``
+
 ========
 
 ###Usage
