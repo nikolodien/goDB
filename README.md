@@ -34,6 +34,8 @@ It makes use of leveldb to store the log entries
 
 ``> export GOPATH=<directory>``
 
+``> export PATH=$PATH:$GOPATH/bin``
+
 ``> go get github.com/nikolodien/goDB``
 
 #####The next two steps can be skipped if you don't get any messages
