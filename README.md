@@ -2,9 +2,9 @@
 
 ###Features
 
-1. Replicated
-2. Eventually Consistent
-3. Fault Tolerant
+1. Eventually Consistent
+2. Available
+3. Partition Tolerant
 
 ========
 
