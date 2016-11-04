@@ -3,7 +3,7 @@
 ###Features
 
 1. Replicated
-2. Consistent
+2. Eventually Consistent
 3. Fault Tolerant
 
 ========
